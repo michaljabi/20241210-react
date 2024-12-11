@@ -1,5 +1,6 @@
 import {Menu} from "./Menu.tsx";
 import {Outlet} from "react-router";
+import {HelloWorld} from "./a-basics/components/HelloWorld.tsx";
 
 function App() {
   const subtitleName = 'react'
@@ -13,7 +14,7 @@ function App() {
                       <h4 className="subtitle">sprawdź jak działa {subtitleName}!...</h4>
                   </div>
               </header>
-
+              <HelloWorld />
               <section className="columns mt-5">
                   <Menu />
                   <div className="column is-9 content">
