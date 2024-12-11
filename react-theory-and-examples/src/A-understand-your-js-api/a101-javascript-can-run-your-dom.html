@@ -20,28 +20,74 @@
     </style>
 </head>
 <body>
-    <div id="root">
-        <div class="helloWrapper">
-            <h2>Hello World</h2>
-            <p class="box">
-                Welcome to my example
-            </p>
-        </div>
+<div id="root">
+    <div class="helloWrapper">
+        <h2>Hello World APP</h2>
+        <p class="box">
+            Welcome to my example
+        </p>
     </div>
-    <script>
-        /**
-         * Jak używając tylko JavaScript (Vanilla) pokazać ten sam wrapper na ekranie?
-         * Umieszczony pod aktualnym div.helloWrapper
-         *
-         * Pomocnicy:
-         * https://developer.mozilla.org/en-US/docs/Web/API
-         * https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/How_to_create_a_DOM_tree
-         *
-         * https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
-         * https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
-         * https://developer.mozilla.org/en-US/docs/Web/API/Element/append
-         * https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
-         */
-    </script>
+    <!-- to ma być wykonane w JS -->
+    <div class="helloWrapper">
+        <h2>Hello World</h2>
+        <p class="box">
+            Welcome to my example
+        </p>
+    </div>
+</div>
+<script>
+    /**
+     * Jak używając tylko JavaScript (Vanilla) pokazać ten sam wrapper na ekranie?
+     * Umieszczony pod aktualnym div.helloWrapper
+     *
+     * Pomocnicy:
+     * https://developer.mozilla.org/en-US/docs/Web/API
+     * https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/How_to_create_a_DOM_tree
+     *
+     * https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+     * https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+     * https://developer.mozilla.org/en-US/docs/Web/API/Element/append
+     * https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+     */
+
+    // tutaj rozwiązanie...
+    console.log('HELLO !')
+    console.log("HELLO !")
+
+    console.log(`HELLO ${ 2 + 2 * 2 }
+
+
+
+
+        ?`)
+
+    document.body.innerHTML += `
+            <div class="helloWrapper">
+                <h2>Hello World</h2>
+                <p class="box">
+                    Welcome to my example
+                </p>
+            </div>
+        `
+
+    const root = document.querySelector('#root')
+
+    const wrapper = document.createElement('div')
+    wrapper.className = 'helloWrapper'
+
+    console.log(wrapper);
+    console.dir(wrapper.tagName);
+
+    const h2 = document.createElement('h2')
+    h2.innerText = 'Hello World by JS [4]'
+
+    const p = document.createElement('p')
+    p.className = 'box'
+    p.innerText = 'Welcome to my example'
+
+    wrapper.append(h2, p)
+    root.appendChild(wrapper)
+    // document.body.appendChild(wrapper);
+</script>
 </body>
 </html>
