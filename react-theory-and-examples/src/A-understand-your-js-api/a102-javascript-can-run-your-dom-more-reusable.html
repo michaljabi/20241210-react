@@ -15,12 +15,12 @@
 </head>
 <body>
     <div id="root">
-        <div class="helloWrapper">
-            <h2>Hello World</h2>
-            <p class="box">
-                Welcome to my example
-            </p>
-        </div>
+<!--        <div class="helloWrapper">-->
+<!--            <h2>Hello World</h2>-->
+<!--            <p class="box">-->
+<!--                Welcome to my example-->
+<!--            </p>-->
+<!--        </div>-->
     </div>
     <script>
         /**
@@ -37,6 +37,7 @@
 	        const p = document.createElement('p');
 	        p.className = className;
 	        p.textContent = text;
+            // p.innerHTML = '<div>hello</div>' to-check (p > div)
 	        return p;
         }
 
@@ -45,13 +46,19 @@
 	        div.append(
 		        Header2('Hello World'),
 		        Paragraph({className: 'box', text: 'Welcome to my example'}),
-		        Paragraph({className: 'box', text: 'Another element...'}),
+		        // Paragraph({className: 'box', text: 'Another element...'}),
 	        )
             return div;
         }
 
         const $root = document.querySelector('#root');
-        $root.appendChild(DivElement());
+        const h2 = Header2('test')
+        const otherH2 = Header2('test')
+        // debugger;
+        $root.append(h2, h2, h2, otherH2, '?', h2);
+
+        $root.append(Header2('1'),Header2('2'),Header2('3'), Paragraph({}))
+        $root.append(DivElement())
     </script>
 </body>
 </html>
