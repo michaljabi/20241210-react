@@ -10,8 +10,8 @@
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
-        import React from "https://esm.sh/react@19.0.0";
-        import { createRoot } from "https://esm.sh/react-dom@19.0.0/client";
+        import React from "https://esm.sh/react@19.0.0/?dev";
+        import { createRoot } from "https://esm.sh/react-dom@19.0.0/client/?dev";
         /**
          * Zadanie:
          * Odkomentuj przykład po przykładzie i popraw pisownie składni
@@ -20,61 +20,85 @@
          * Poznanie zasad używania składni JSX.
          * */
         // -> 1. słowo class jest niedozwolone
-        /*
+
+        let x = 100;
+        const p = <p>test</p>
+        const user = { name: 'Michał'};
+        const myTitle = 'Hello title'
         const iCannotUseClassKeyword = (
-	        <div class="wrapper">
-		        <p class="box">
-			        This is a box!
+	        <div className="wrapper">
+		        <p className="box">
+			        This is a box! { 2 + 2 * 2 }  {x}
 		        </p>
 		        <p>
-		            I Cannot Use "class" Keyword
+		            I Cannot Use "class" Keyword {x + x + x}
 		        </p>
+                {p}
+                <div title={myTitle}>
+                    What will be rendered:
+                    <div>
+                        {'hello'}
+                        {0}
+                        {20}
+                        {true}
+                        {false}
+                        {null}
+                        {undefined}
+                        { [9, 5, 4 ] }
+                        { () => {} }
+                    </div>
+                </div>
 	        </div>
         )
-        */
+
 
         // -> 2. Blok kodu JSX może mieć tylko jeden element główny (top'owy / root'owy)
-	    /*
+
 	    const iNeedToHaveOneRootElement = (
-            <div className="helloWrapper">
-                <h2>Hello World 2</h2>
-                <p className="box">
-                    I Need To Have One Root Element
-                </p>
-            </div>
-            <div>
-                  Second element
-            </div>
+            <>
+                <div className="helloWrapper">
+                    <h2>Hello World 2</h2>
+                    <p className="box">
+                        I Need To Have One Root Element
+                    </p>
+                </div>
+                <div>
+                      Second element
+                </div>
+            </>
         )
-        */
+
 
         // -> 3. Atrybut style musi być obiektem JavaScript
-        /*
+
         const styleAttributeNeedToBeAnJSObject = (
             <div>
               <div> Info </div>
-              <p style="background-color: lightgreen"> Operation successful </p>
+              <p style={ {backgroundColor: 'lightgreen'} }> Operation successful </p>
             </div>
         )
-        */
+
 
         // -> 4. Nazwy komponentów muszą być wielką literą (PascalCase)!
-        function camelCaseWontWork() {
+        function CamelCaseWontWork() {
         	return (<div> What is wrong with me? </div>)
         }
 
         // -> 5. Standardowe komentarze HTML nie zadziałają:
-        /*const elementWithCommentedBlockOfCode = (
+        const elementWithCommentedBlockOfCode = (
 	        <div>
 		        <div> Hello xyz! </div>
-                <!-- this will not work -->
-                {/* This is a way to do it (usuń wykrzyknik :) ->) *!/}
+                {/* This is a way to do it (usuń wykrzyknik :) ->) */}
 	        </div>
-        )*/
+        )
+
+        function MyComponent() {
+            return <p>?</p>
+        }
 
         const root = createRoot(document.getElementById('root'));
         root.render(
-	        ( <div> tutaj podmieniaj kod ! </div> )
+            styleAttributeNeedToBeAnJSObject
         );
 </script>
 </body>
