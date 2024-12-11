@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redux bit complex, less boilerplate</title>
+</head>
+<body>
+
+    <main id="root">
+
+    </main>
+
+    <script type="module">
+        import { configureStore, createSlice  } from 'https://esm.sh/@reduxjs/toolkit'
+
+        const ordersSlice = createSlice({
+            name: 'orders',
+            initialState: {
+                items: ['cola']
+            },
+            reducers: {
+                // reducer'y są teraz rozdzielone "per akcja" (pozbywamy się switcha)
+                addNew: (state, action) => {
+                    // możemy mutować!
+                    state.items.push(action.payload)
+                }
+            }
+        })
+
+        // PROVIDER - store, z drzewem stanu:
+        const store = configureStore({
+            reducer: {
+                [ordersSlice.name]: ordersSlice.reducer
+            },
+            devTools: true
+        });
+
+        // Selektor, zwykła funkcja - wyciągająca daną część stanu
+        // może ew. mapować / przerabiać / przeliczać na potrzeby prezentacji danych
+        const selectAllOrders = (state) => state[ordersSlice.name].items
+
+        // CONSUMER - odbiorca naszej logiki:
+        store.subscribe(() => {
+            console.log(store.getState());
+            document.body.innerHTML = selectAllOrders(store.getState()).join(' ___ ')
+        })
+
+        const { addNew } = ordersSlice.actions;
+        // EVENTS (actions dispatcher) - Zmiana stanu.
+        store.dispatch(addNew('pizza'));
+        store.dispatch(addNew('pasta'));
+        store.dispatch(addNew('chicken'));
+    </script>
+</body>
+</html>

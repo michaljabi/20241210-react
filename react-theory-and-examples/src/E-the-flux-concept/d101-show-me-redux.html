@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redux initial</title>
+</head>
+<body>
+
+    <main id="root">
+        <button class="btn-decrease"> - </button>
+        <code class="display" style="padding: 0 10px"> 1 </code>
+        <button class="btn-increase"> + </button>
+    </main>
+
+    <script type="module">
+        import { configureStore } from 'https://esm.sh/@reduxjs/toolkit'
+
+        const initialState = { value: 1 }
+
+        function counterReducer(state = initialState, action) {
+            switch (action.type) {
+                case 'counter/increase':
+                    return { value: state.value + 1 }
+	            case 'counter/decrease':
+		            return { value: state.value - 1 }
+                default:
+                    return state;
+            }
+        }
+
+        // PROVIDER - store, z drzewem stanu:
+        const store = configureStore({
+            reducer: {
+                counter: counterReducer
+            }
+        });
+
+        // BINDINGS:
+        const $btnIncrease = document.querySelector('.btn-increase')
+        const $btnDecrease = document.querySelector('.btn-decrease')
+        const $display = document.querySelector('.display')
+
+        $btnIncrease.addEventListener('click', () => store.dispatch({type: 'counter/increase'}))
+        $btnDecrease.addEventListener('click', () => store.dispatch({type: 'counter/decrease'}))
+
+        store.subscribe(() => {
+           $display.textContent = store.getState().counter.value;
+        })
+    </script>
+</body>
+</html>
