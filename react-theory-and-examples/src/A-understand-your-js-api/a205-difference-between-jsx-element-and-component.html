@@ -31,11 +31,26 @@
 
     const myElement = (<p>Hello element !</p>)
 
+    const sum = (a, b) => a + b
+    const sumMultiline = (a, b) => {
+        return a + b
+    }
+
+    // @DOC: https://developer.mozilla.org/en-US/docs/Glossary/Function
+
 	const App = () => (
       <main>
         <h1>Playground</h1>
         <section>
           {/* Poniżej osadź komponenty oraz element JSX: */}
+          {myElement}
+          {myElement}
+            {MyComponent()} {/* <- to zadziała, ale chcemy tego unikać, to React ma tworzyć instancję komponentu, nie my!*/}
+          <MyComponent />
+          <MyOtherComponent />
+            {sum(6, 8)}
+            <br />
+            {sumMultiline(6, 8)}
         </section>
       </main>
     )
