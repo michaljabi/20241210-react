@@ -16,6 +16,7 @@ export function Menu() {
         <nav className="menu column">
             <p className="menu-label">Część A - <strong>Podstawy</strong></p>
             <ul className="menu-list">
+                {/* <a href="/sample">TEST</a>  tak nie wolno - bo linki muszą mieć zabrane natywne zachowanie */}
                 <ActiveLinkLi to="/sample"> Przykład komponentu </ActiveLinkLi>
                 <ActiveLinkLi to="/using-jsx"> Korzystanie z JSX </ActiveLinkLi>
                 <ActiveLinkLi to="/hermetic-style"> Hermetyczność stylu </ActiveLinkLi>

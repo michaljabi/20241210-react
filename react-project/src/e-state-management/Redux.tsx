@@ -12,7 +12,7 @@ export function Redux() {
         <>
             <h2>Redux</h2>
             <h3 className="subtitle is-4 bold subtitle is-family-monospace">
-                Redux.tsx
+                Redux.tsx cokolwiek
             </h3>
 
             <div className="is-flex is-align-items-center">
