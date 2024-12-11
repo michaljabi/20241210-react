@@ -19,10 +19,11 @@
          * W tym układzie możemy ją dość łatwo "doczepić" do części / całości naszego projektu.
 	     *
 	     * */
-	    const h1 = React.createElement('h1', null, 'Hello, React!');
+	    const h1 = React.createElement('h1', { className: 'test' }, 'Hello, React!', '?');
+	    const div = React.createElement('div', { className: 'wrapper' }, h1);
 	    const $app = document.getElementById('app');
 	    const rootElement = ReactDOM.createRoot($app);
-		rootElement.render(h1);
+		rootElement.render(div);
 
     </script>
 </body>
