@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 4500",
+    "dev": "vite --port 4500 --open",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "shout": "echo hello world"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
