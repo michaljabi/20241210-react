@@ -11,7 +11,7 @@
 <div id="root"></div>
 
 <script type="text/babel" data-type="module">
-    import React from "https://esm.sh/react@19.0.0";
+    import React, { useState } from "https://esm.sh/react@19.0.0";
     import { createRoot } from "https://esm.sh/react-dom@19.0.0/client";
 	/**
      * Sprawdź działanie przykładu w przeglądarce (live server).
@@ -22,21 +22,54 @@
      * komponentu, który go deklaruje.
      *
 	 * */
+    // const name = 'Outer World...'
 
-    const { useState } = React;
+    function Greetings() {
+
+        //console.log('CHECK IT')
+        return <div>Your number is </div>
+    }
+
+    // const ok = useState('World');
 
     function App() {
-		const [name, setName] = useState('World');
+		const nameArr = useState('World');
+        // Tak nie piszemy, ale to robi destrukturyzacja tablicy pod spodem
+        const name = nameArr[0]
+        const setName = nameArr[1]
+
+		const [counter, setCounter] = useState(0);
+
+        // const name = 'World'
+        // const counter = 'World'
+
+        const handleClick = () => {
+            // let x = 0;
+            // let name = 'sample';
+            // name = 'Michał'
+            setName(name === 'World' ? 'Michał' : 'World')
+            console.log(name);
+        }
+
+        console.log('APP wywołane...', name)
+
 	    return (
-		    <div>
-			    <h1>Hello {name}</h1>
-			    <button onClick={() => setName('Michał')}> Change the Title</button>
-		    </div>
-	    )
+            <div>
+
+                {/*<button onClick={() => {
+                    console.log(name)
+                }}> Change the Title
+                </button>*/}
+                <button onClick={handleClick}> Change the Title</button>
+                <h1>Hello {name}</h1>
+                <button onClick={() => setCounter(counter+1)}> {counter}</button>
+                <Greetings />
+            </div>
+        )
     }
 
     const root = createRoot(document.getElementById('root'));
-    root.render(<App />);
+    root.render(<App/>);
 </script>
 </body>
 </html>

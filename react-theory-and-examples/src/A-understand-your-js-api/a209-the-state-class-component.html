@@ -37,10 +37,17 @@
 
     	render() {
     		// metoda render wywołana zostanie za każdym razem, gdy wywołamy: this.setState !!!
+            const handleChangeName = () => {
+                this.setState({name: 'Michał'})
+                console.log(this.state.name)
+            }
+
+            console.log('APP rendered..', this.state.name)
+
     		return (
     			<div>
                     <h1>Hello {this.state.name}</h1>
-                    <button onClick={() => this.setState({name: 'Michał'})}> Change the Title</button>
+                    <button onClick={handleChangeName}> Change the Title</button>
                 </div>
             )
         }

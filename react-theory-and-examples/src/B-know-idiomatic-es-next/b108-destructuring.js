@@ -13,12 +13,13 @@
 	// Dawniej:
  const simpleExampleObject = { hello: 'World', goodbye: 'Universe', user: { name: 'Michal' }  }
 
- const hello = simpleExampleObject.hello;
+ const hello = simpleExampleObject.goodbye;
  console.log(hello)
 
  // Teraz:
- const { goodbye } = simpleExampleObject;
+ const { goodbye, user } = simpleExampleObject;
  console.log(goodbye)
+ console.log(user)
 
  // Można również:
  const { user: {name} } = simpleExampleObject;
@@ -34,8 +35,10 @@
  console.log(banana);
 
  // Teraz:
- const [myApple, myBanana] = fruits;
- console.log(myApple);
+ // const {state, setState} = useState(0)
+ // const [c, setC] = useState(0)
+ const [,myBanana] = fruits;
+ //console.log(myApple);
  console.log(myBanana);
 
  // Można również:
