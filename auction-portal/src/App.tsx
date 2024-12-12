@@ -1,5 +1,5 @@
-import {Header} from "./Header.tsx";
-import {MainMenu} from "./MainMenu.tsx";
+import {Header} from "./common/Header.tsx";
+import {MainMenu} from "./common/MainMenu.tsx";
 import {ItemsInCart} from "./shared/ItemsInCart.tsx";
 import {Outlet} from "react-router";
 
