@@ -1,6 +1,8 @@
 //rfc
 
 // TS ftw
+import {useState} from "react";
+
 interface MenuItem {
     link: string;
     text: string;
@@ -23,12 +25,25 @@ export function MainMenu() {
         }
     ]
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleClick = () => {
+        setIsMenuOpen(!isMenuOpen)
+        console.log('HELLo')
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light px-3 mb-3">
-            <button className="navbar-toggler" type="button">
+            {/*<button className="navbar-toggler" type="button" onClick={
+                () => {
+                    setIsMenuOpen(!isMenuOpen)
+                    console.log('HELLo')
+                }
+            }>*/}
+            <button className="navbar-toggler" type="button" onClick={handleClick}>
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse show">
+            <div className={"collapse navbar-collapse " + (isMenuOpen ? 'show' : '')}>
                 <ul className="navbar-nav">
                     {
                         items.map((item) => (
