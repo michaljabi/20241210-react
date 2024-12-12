@@ -4,7 +4,7 @@ import {ItemsInCart} from "./ItemsInCart.tsx";
 
 function App() {
 
-  const numberOfItems = 10;
+  const numberOfItems = 0;
   return (
     <>
         <Header />
