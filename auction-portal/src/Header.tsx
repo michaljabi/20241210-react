@@ -7,6 +7,8 @@ interface Props {
 // export function Header(props: {title?: string}) {
 export function Header({ title = 'Auction Portal', myLuckyNumber }: Props) {
 
+    // const hello = 'Hello'
+
     return (
         <header className="mb-2 p-5 bg-warning">
             <h1>{title}</h1>
