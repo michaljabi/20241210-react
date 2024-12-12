@@ -1,14 +1,15 @@
 import {Header} from "./Header.tsx";
-
+import {MainMenu} from "./MainMenu.tsx";
 
 function App() {
 
   //  console.log('App działa!')
   return (
     <>
-        <Header myLuckyNumber={879} />
-        <Header title="Jakiś inny tytuł" />
         <Header />
+        <main className="container">
+           <MainMenu />
+        </main>
     </>
   )
 }
