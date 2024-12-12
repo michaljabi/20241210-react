@@ -1,6 +1,7 @@
 import {Header} from "./Header.tsx";
 import {MainMenu} from "./MainMenu.tsx";
 import {ItemsInCart} from "./ItemsInCart.tsx";
+import {Outlet} from "react-router";
 
 function App() {
 
@@ -11,6 +12,8 @@ function App() {
         <main className="container">
            <MainMenu />
            <ItemsInCart counter={numberOfItems} />
+            {/* Outlet wpinamy tutaj ! */}
+            <Outlet />
         </main>
     </>
   )
