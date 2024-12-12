@@ -1,14 +1,16 @@
 import {Header} from "./Header.tsx";
 import {MainMenu} from "./MainMenu.tsx";
+import {ItemsInCart} from "./ItemsInCart.tsx";
 
 function App() {
 
-  //  console.log('App działa!')
+  const numberOfItems = 10;
   return (
     <>
         <Header />
         <main className="container">
            <MainMenu />
+           <ItemsInCart counter={numberOfItems} />
         </main>
     </>
   )
