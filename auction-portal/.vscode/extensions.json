@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "ritwickdey.LiveServer",
+    "dbaeumer.vscode-eslint",
+    "vscode-icons-team.vscode-icons",
+    "achil.vscode-javascript-repl",
+    // help in HTML/JSX:
+    "formulahendry.auto-rename-tag",
+    "dylangarcia.class-to-classname",
+    // React specific:
+    "dsznajder.es7-react-js-snippets",
+    "planbcoding.vscode-react-refactor",
+    // Help in project:
+    "dotenv.dotenv-vscode",
+    "humao.rest-client",
+    "hossaini.bootstrap-intellisense"
+  ]
+}
