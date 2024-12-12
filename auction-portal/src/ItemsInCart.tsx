@@ -1,7 +1,8 @@
+interface Props {
+    counter?: number;
+}
 
-
-
-export function ItemsInCart({counter = 0}: { counter?: number}) {
+export function ItemsInCart({counter = 0}: Props) {
 
     if(counter === 0){
         return "";
