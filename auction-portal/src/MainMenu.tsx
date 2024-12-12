@@ -2,6 +2,7 @@
 
 // TS ftw
 import {useState} from "react";
+import {NavLink} from "react-router";
 
 interface MenuItem {
     link: string;
@@ -48,7 +49,7 @@ export function MainMenu() {
                     {
                         items.map((item) => (
                             <li className="nav-item" key={item.link}>
-                                <a className="nav-link" href={item.link}>{item.text}</a>
+                                <NavLink className="nav-link" to={item.link}>{item.text}</NavLink>
                             </li>
                         ))
                     }
