@@ -13,13 +13,13 @@ export function ItemsInCart({counter}: Props) {
         </div>;
     }*/
 
-    const computedText = !counter ?
-        'Nie masz elementów w koszyku, postaraj się coś wybrać'
+    const computed = !counter ?
+        <>Nie masz elementów w <strong>koszyku</strong>, postaraj się coś wybrać</>
         :
         `Masz już ${counter} elementów w koszyku`
 
     return (<div className="alert alert-primary" role="alert">
-        {computedText}
+        {computed}
     </div>)
 
     /*return (
