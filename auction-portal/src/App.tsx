@@ -1,6 +1,6 @@
 import {Header} from "./Header.tsx";
 import {MainMenu} from "./MainMenu.tsx";
-import {ItemsInCart} from "./ItemsInCart.tsx";
+import {ItemsInCart} from "./shared/ItemsInCart.tsx";
 import {Outlet} from "react-router";
 
 function App() {
