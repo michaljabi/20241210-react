@@ -1,9 +1,27 @@
 import {AuctionItem} from "./AuctionItem.ts";
 import {AuctionCard} from "./AuctionCard.tsx";
+import {useEffect} from "react";
+import {auctionService} from "./auction.service.ts";
 
 export function AuctionsPage() {
 
     const auctions: AuctionItem[] = [];
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            try {
+                const response = await auctionService.getAll()
+                console.log(response.data)
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    console.log(err.message)
+                }
+            }
+        }
+        fetchData();
+
+    }, [])
 
     return (
         <>

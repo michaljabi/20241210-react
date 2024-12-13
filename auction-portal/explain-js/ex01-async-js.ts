@@ -41,7 +41,7 @@ Promise.resolve(2)
 
 function num() {
 
-    await Promise.resolve()
+    // await Promise.resolve()
 
     return 2
 }
