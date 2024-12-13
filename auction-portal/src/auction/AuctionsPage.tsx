@@ -42,18 +42,13 @@ export function AuctionsPage() {
         <>
             <h2> Lista Aukcji </h2>
             <div className="row">
-                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <AuctionCard auction={auctions[0]}/>
-                </div>
-                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                    2
-                </div>
-                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                    3
-                </div>
-                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                    4
-                </div>
+                {
+                    auctions.map(a => (
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={a.id}>
+                            <AuctionCard auction={a}/>
+                        </div>
+                    ))
+                }
             </div>
         </>
     );
