@@ -7,7 +7,11 @@ export function AuctionsPage() {
 
     // let auctions: AuctionItem[] = [];
     const [isLoading, setIsLoading] = useState(false);
+
+    // errorMessage na początku ma wartość "" i przechowywać będzie string;
+    // setErrorMessage - to akcja aktualizacji stanu, która WYWOŁA za każdym razem tę funkcję AuctionsPage() ponownie!
     const [errorMessage, setErrorMessage] = useState("");
+
     const [auctions, setAuctions] = useState<AuctionItem[]>([])
 
     useEffect(() => {
@@ -31,10 +35,19 @@ export function AuctionsPage() {
 
     }, [])
 
+    // Tak nie mogę, bo tutaj proszę "zaktualizuj isLoading przy następnym re-renderze na false"
+    // setIsLoading(false);
+
     return (
         <>
-            <h2> Lista Aukcji </h2>
+            <h2 onClick={() => setIsLoading(true)}> Lista Aukcji </h2>
             <div className="row">
+                {
+                    isLoading &&
+                        <div className="col-12">
+                            <div className="alert alert-info">Poczekaj... ładuję aukcje... &&</div>
+                        </div>
+                }
                 {
                     isLoading ?
                         <div className="col-12">
