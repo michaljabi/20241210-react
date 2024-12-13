@@ -55,6 +55,14 @@ export function MainMenu() {
                     }
                 </ul>
             </div>
+            <div className="text-light">
+                <NavLink className="btn btn-outline-primary mx-2" to="/add-auction">
+                    ➕ Dodaj
+                </NavLink>
+                <NavLink className="btn btn-outline-secondary" to="/cart">
+                    Koszyk
+                </NavLink>
+            </div>
         </nav>
     );
 }
