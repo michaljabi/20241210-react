@@ -6,11 +6,14 @@ import { RouterProvider } from "react-router/dom";
 import { router } from "./router.tsx";
 // import {auctionService} from "./auction/auction.service.ts";
 
-import './store.ts'
+import {store} from './store.ts'
+import {Provider} from "react-redux";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+      <Provider store={store} >
+          <RouterProvider router={router} />
+      </Provider>
   </StrictMode>,
 )
 
