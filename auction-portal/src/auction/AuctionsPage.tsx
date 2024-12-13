@@ -6,6 +6,8 @@ import {auctionService} from "./auction.service.ts";
 export function AuctionsPage() {
 
     // let auctions: AuctionItem[] = [];
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const [auctions, setAuctions] = useState<AuctionItem[]>([])
 
     useEffect(() => {
@@ -13,13 +15,17 @@ export function AuctionsPage() {
         // IIFE Immediately Invoked Function Expression
         // https://developer.mozilla.org/en-US/docs/Glossary/IIFE
         (async () => {
+            setIsLoading(true);
+            setErrorMessage("");
             try {
                 const response = await auctionService.getAll()
                 setAuctions(response.data);
             } catch (err: unknown) {
                 if (err instanceof Error) {
-                    console.log(err.message)
+                    setErrorMessage(err.message)
                 }
+            } finally {
+                setIsLoading(false);
             }
         })();
 
@@ -29,6 +35,22 @@ export function AuctionsPage() {
         <>
             <h2> Lista Aukcji </h2>
             <div className="row">
+                {
+                    isLoading ?
+                        <div className="col-12">
+                            <div className="alert alert-info">Poczekaj... ładuję aukcje...</div>
+                        </div>
+                        :
+                        ""
+                }
+                {
+                    errorMessage ?
+                        <div className="col-12">
+                            <div className="alert alert-danger">💥 Wystąpił błąd... "{errorMessage}" 😭</div>
+                        </div>
+                        :
+                        ""
+                }
                 {
                     auctions.map(a => (
                         <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={a.id}>
