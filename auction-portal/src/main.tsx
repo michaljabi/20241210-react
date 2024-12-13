@@ -6,6 +6,8 @@ import { RouterProvider } from "react-router/dom";
 import { router } from "./router.tsx";
 // import {auctionService} from "./auction/auction.service.ts";
 
+import './store.ts'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <RouterProvider router={router} />
