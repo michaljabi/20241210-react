@@ -39,13 +39,16 @@
         const $btnIncrease = document.querySelector('.btn-increase')
         const $btnDecrease = document.querySelector('.btn-decrease')
         const $display = document.querySelector('.display')
-
+// CQS => Command Query Separation
         $btnIncrease.addEventListener('click', () => store.dispatch({type: 'counter/increase'}))
         $btnDecrease.addEventListener('click', () => store.dispatch({type: 'counter/decrease'}))
 
         store.subscribe(() => {
            $display.textContent = store.getState().counter.value;
         })
+
+        // Command = Action in Redux
+        // Query = Selector in Redux
     </script>
 </body>
 </html>
