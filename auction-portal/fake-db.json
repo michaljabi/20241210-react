@@ -40,6 +40,13 @@
       "imgUrl": "https://picsum.photos/id/304/600/600",
       "description": "stalowy",
       "id": "s234"
+    },
+    {
+      "id": "0411",
+      "imgUrl": "https://picsum.photos/id/19/600/600",
+      "price": "4500",
+      "description": "",
+      "title": "Drzewko"
     }
   ]
 }

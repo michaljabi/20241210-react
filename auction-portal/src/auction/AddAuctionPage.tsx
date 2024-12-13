@@ -1,4 +1,52 @@
+import {useForm} from "react-hook-form";
+import {FormEvent, useState} from "react";
+import {AuctionItem} from "./AuctionItem.ts";
+import {auctionService} from "./auction.service.ts";
+
+interface AddAuctionForm {
+    title: string;
+    imgId: number;
+    description?: string;
+    price: number;
+}
+
 export function AddAuctionPage() {
+
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<AddAuctionForm>({
+        mode: "onTouched",
+    });
+
+
+
+    const [imgId, setImgId] = useState(10)
+    const imgUrl = `https://picsum.photos/id/${imgId}/600/600`
+
+    function handleImgIdInput(ev: FormEvent) {
+        if(ev.target instanceof HTMLInputElement) {
+            setImgId(Number(ev.target.value));
+        }
+    }
+
+    const onSubmit = handleSubmit(async (values) => {
+
+        const auction: Omit<AuctionItem, 'id'> = {
+            imgUrl: imgUrl,
+            price: values.price,
+            description: values.description,
+            title: values.title,
+        }
+        try {
+            const result = await auctionService.addOne(auction);
+            console.log(result);
+            reset();
+        } catch (e: unknown) {
+            if(e instanceof Error) {
+                console.error(e);
+            }
+        }
+    });
+
     return (
         <>
             <h2>Dodaj aukcje</h2>
@@ -7,11 +55,11 @@ export function AddAuctionPage() {
                     <img
                         className="img-thumbnail"
                         alt="Photo preview"
-                        src="https://picsum.photos/id/8/600/600"
+                        src={imgUrl}
                     />
                 </div>
                 <div className="col-6">
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <div className="form-group">
                             <label htmlFor="auctionTitle">Auction name</label>
                             <div className="input-group mb-3">
@@ -23,10 +71,17 @@ export function AddAuctionPage() {
                                 <input
                                     id="auctionTitle"
                                     type="text"
-                                    name="title"
                                     className="form-control"
+                                    { ...register("title", { required: "tytuł jest wymagany..." }) }
                                 />
                             </div>
+                            {
+                                errors.title
+                                &&
+                                <div className="alert alert-danger">
+                                    {errors.title?.message}
+                                </div>
+                            }
                         </div>
 
                         <div className="form-group">
@@ -40,8 +95,8 @@ export function AddAuctionPage() {
                                 <input
                                     id="auctionPrice"
                                     type="number"
-                                    name="price"
                                     className="form-control"
+                                    { ...register("price") }
                                 />
                             </div>
                         </div>
@@ -57,8 +112,10 @@ export function AddAuctionPage() {
                                 <input
                                     id="imgId"
                                     type="number"
-                                    name="imgId"
                                     className="form-control"
+                                    value={imgId}
+                                    onInput={handleImgIdInput}
+                                    { ...register("imgId") }
                                 />
                             </div>
                         </div>
@@ -70,7 +127,7 @@ export function AddAuctionPage() {
                                     id="auctionDescription"
                                     rows={5}
                                     className="form-control"
-                                    name="description"
+                                    { ...register("description") }
                                 />
                             </div>
                         </div>
