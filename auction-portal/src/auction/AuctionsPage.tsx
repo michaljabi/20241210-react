@@ -3,21 +3,7 @@ import {AuctionCard} from "./AuctionCard.tsx";
 
 export function AuctionsPage() {
 
-    const auctions: AuctionItem[] = [
-        {
-            id: "LqGA",
-            title: "Mac Book",
-            imgUrl: "https://picsum.photos/id/48/600/600",
-            description: "Używany - ale sprawny",
-            price: 4000
-        },
-        {
-            id: "kV-c",
-            title: "Smartfon",
-            imgUrl: "https://picsum.photos/id/160/600/600",
-            price: 800
-        },
-    ];
+    const auctions: AuctionItem[] = [];
 
     return (
         <>

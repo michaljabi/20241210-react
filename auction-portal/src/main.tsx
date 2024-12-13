@@ -4,6 +4,7 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import { RouterProvider } from "react-router/dom";
 import { router } from "./router.tsx";
+// import {auctionService} from "./auction/auction.service.ts";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,3 +18,5 @@ createRoot(document.getElementById('root')!).render(
 // }
 //
 // setTimeout(() => {}, );
+
+// auctionService.getAll().then((d) => console.log(d.data) )

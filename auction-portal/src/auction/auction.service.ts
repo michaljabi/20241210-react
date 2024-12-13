@@ -10,7 +10,7 @@ const BASE_ENDPOINT = '/auctions'
 // Mój stateless REST service do zapytań AJAX
 export const auctionService = {
     async getAll() {
-        return axiosInstance.get<AuctionItem[]>(BASE_ENDPOINT);
+        return axiosInstance.get<AuctionItem[]>(BASE_ENDPOINT/*, { params: { size: 100, page: 1 } }*/);
     },
     // mapped Types in TS
     async getOne(id: AuctionItem['id']) {
