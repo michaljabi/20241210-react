@@ -10,7 +10,9 @@ export function AuctionsPage() {
 
     useEffect(() => {
 
-        const fetchData = async () => {
+        // IIFE Immediately Invoked Function Expression
+        // https://developer.mozilla.org/en-US/docs/Glossary/IIFE
+        (async () => {
             try {
                 const response = await auctionService.getAll()
                 setAuctions(response.data);
@@ -19,8 +21,7 @@ export function AuctionsPage() {
                     console.log(err.message)
                 }
             }
-        }
-        fetchData();
+        })();
 
     }, [])
 
